@@ -2,7 +2,14 @@
   "name": "playwrightwithtypescriptframework",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test_dev": "cross-env ENV_NAME=dev npx playwright test",
+    "test_demo": "cross-env ENV_NAME=demo npx playwright test",
+    "test_demo_cr_hd": "cross-env ENV_NAME=demo npx playwright test --project=chromium --headed",
+    "test_demo_fr_hd": "cross-env ENV_NAME=demo npx playwright test --project=firefox --headed",
+    "test_demo_cr_hl": "cross-env ENV_NAME=demo npx playwright test --project=chromium",
+    "test_demo_fr_hl": "cross-env ENV_NAME=demo npx playwright test --project=firefox"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -13,6 +20,7 @@
   },
   "dependencies": {
     "cross-env": "^7.0.3",
+    "crypto-js": "^4.2.0",
     "dotenv": "^17.0.1"
   }
 }
