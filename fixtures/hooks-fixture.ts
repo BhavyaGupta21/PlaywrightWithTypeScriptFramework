@@ -19,3 +19,5 @@ export const test = baseTest.extend<HooksFixtureType>({
         await userPage.logout();
     }
 });
+
+export {expect} from '@playwright/test';
