@@ -6,7 +6,13 @@ test.use({storageState:{
     origins:[]
 }});
 
-test('[Login] Verify that the user cannot login with an invalid password', async({gotoUrl, loginPage, commonUtils}) => {
+test('[Login] Verify that the user cannot login with an invalid password', {
+    tag: ['@UI', '@UAT'],
+    annotation: {
+        type: 'Test Case Link',
+        description: 'Add test case link for this test case'
+    }
+}, async({gotoUrl, loginPage, commonUtils}) => {
 
     const username = commonUtils.decryptData(process.env.USER_NAME!);
     await loginPage.loginOrangeHrm(username, loginModuleData.wrong_password);
@@ -14,7 +20,13 @@ test('[Login] Verify that the user cannot login with an invalid password', async
     await expect(loginPage.userNameInput).toBeVisible();
 });
 
-test('[Login] Verify that the user cannot login with an invalid username', async({gotoUrl, loginPage, commonUtils}) => {
+test('[Login] Verify that the user cannot login with an invalid username', {
+    tag: ['@UI', '@UAT', '@DEV'],
+    annotation: {
+        type: 'Test Case Link',
+        description: 'Add test case link for this test case'
+    }
+}, async({gotoUrl, loginPage, commonUtils}) => {
 
     const password = commonUtils.decryptData(process.env.PASSWORD!);
     await loginPage.loginOrangeHrm(loginModuleData.wrong_username, password);
@@ -22,7 +34,13 @@ test('[Login] Verify that the user cannot login with an invalid username', async
     await expect(loginPage.userNameInput).toBeVisible();
 });
 
-test('[Login] Verify that the user cannot login with both an invalid username and password', async({gotoUrl, loginPage, commonUtils}) => {
+test('[Login] Verify that the user cannot login with both an invalid username and password', {
+    tag: ['@UI', '@UAT'],
+    annotation: {
+        type: 'Test Case Link',
+        description: 'Add test case link for this test case'
+    }
+}, async({gotoUrl, loginPage, commonUtils}) => {
 
     await loginPage.loginOrangeHrm(loginModuleData.wrong_username, loginModuleData.wrong_password);
     await expect(loginPage.invalidCredentialsErrorPopup).toHaveText(loginModuleData.invalid_credentials_text);
