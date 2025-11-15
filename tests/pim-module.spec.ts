@@ -9,7 +9,16 @@ test('[PIM] Verify that a new employee is successfully created under the PIM mod
     }
 }, async({gotoUrl, leftNavigationPage, pimPage})=> {
 
-    await leftNavigationPage.openPimModule();
-    await pimPage.addEmployee(pimData.first_name, pimData.middle_name, pimData.last_name);
-    await expect (pimPage.newEmployeeNameHeading).toHaveText(`${pimData.first_name} ${pimData.last_name}`);
+    await test.step("Open PIM Module", async() => {
+        await leftNavigationPage.openPimModule();
+    });
+
+    await test.step("Add Employee in PIM Module", async() => {
+        await pimPage.addEmployee(pimData.first_name, pimData.middle_name, pimData.last_name);
+    });
+
+    await test.step ("Verify that the Employee is Created", async() => {
+        await expect (pimPage.newEmployeeNameHeading).toHaveText(`${pimData.first_name} ${pimData.last_name}`);
+    });
+
 })
