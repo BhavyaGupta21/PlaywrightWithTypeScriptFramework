@@ -28,8 +28,11 @@
          * @param password 
          */
         async loginOrangeHrm(username: string, password: string) {
+            await this.userNameInput.waitFor({state: 'visible'});
             await this.userNameInput.fill(username);
+            await this.passwordInput.waitFor({state: 'visible'});
             await this.passwordInput.fill(password);
+            await this.loginButton.waitFor({state: 'visible'});
             await this.loginButton.click();
         }
     }
