@@ -56,3 +56,19 @@ test.describe("Invalid Login Tests", {
         await expect(loginPage.userNameInput).toBeVisible();
     });
 });
+
+test('[Login] Verify that the user can login with valid username and password',{
+    tag: ['@VISUAL', '@UAT'],
+    annotation: {
+        type: 'Test Case Link',
+        description: 'Add the Link'
+    }
+}, async({ gotoUrl, loginPage, commonUtils, leftNavigationPage }) => {
+    const username = commonUtils.decryptData(process.env.USER_NAME!);
+    const password = commonUtils.decryptData(process.env.PASSWORD!);
+
+    await loginPage.loginOrangeHrm(username, password);
+    await expect(leftNavigationPage.orangeHrmLogo).toHaveScreenshot('OrangeHrmBrandLogo.png');
+    await expect(leftNavigationPage.leftNavigationPanel).toHaveScreenshot('LeftNavPanel.png');
+
+})
